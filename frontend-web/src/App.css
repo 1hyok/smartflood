@@ -112,4 +112,85 @@
   .App-header h1 {
     font-size: 2rem;
   }
+
+  /* 지도 섹션 */
+.map-section {
+  margin: 3rem 0;
+}
+
+.map-section h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* 하수관거 섹션 */
+.drainage-section {
+  margin: 3rem 0;
+}
+
+.drainage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.drainage-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.drainage-card h4 {
+  margin: 0 0 1rem 0;
+  color: #ffc107;
+  font-size: 1.2rem;
+}
+
+.drainage-card p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* 데이터 카드 개선 */
+.data-card small {
+  display: block;
+  margin-top: 1rem;
+  opacity: 0.7;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* 예측 결과 스타일링 */
+.predictions span {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* 반응형 개선 */
+@media (max-width: 768px) {
+  .drainage-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .map-section {
+    margin: 2rem 0;
+  }
+  
+  .drainage-card {
+    padding: 1rem;
+  }
+}
+
+/* 지도 컨테이너 그림자 효과 */
+.map-section > div {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
 }
