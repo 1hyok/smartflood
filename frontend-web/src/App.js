@@ -11,7 +11,7 @@ function App() {
   const [drainageData, setDrainageData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const API_BASE_URL = 'http://localhost:3001/api';
+  const API_BASE_URL = 'http://localhost:3000/api';
 
   // 침수 위험도 조회
   const checkFloodRisk = async () => {
@@ -25,8 +25,8 @@ function App() {
     setLoading(false);
   };
 
-  // 실시간 데이터 로드
-  const loadRealtimeData = async () => {
+  // 시연용 데이터 로드
+  const loadDemoData = async () => {
     try {
       const [weatherRes, waterRes, cctvRes, drainageRes] = await Promise.all([
         axios.get(`${API_BASE_URL}/weather`),
@@ -45,7 +45,7 @@ function App() {
   };
 
   useEffect(() => {
-    loadRealtimeData();
+    loadDemoData();
   }, []);
 
   const getRiskColor = (level) => {
@@ -72,13 +72,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>🌊 SmartFlood</h1>
-        <p>서울시 도림천 침수예측 시스템</p>
+        <p>도림천 침수 위험도 시제품</p>
+        <p>모든 화면 값은 시연용 더미 데이터입니다.</p>
       </header>
 
       <main className="container">
         {/* 침수 위험도 섹션 */}
         <section className="risk-section">
-          <h2>현재 침수 위험도</h2>
+          <h2>시연용 침수 위험도</h2>
           <button onClick={checkFloodRisk} disabled={loading} className="check-btn">
             {loading ? '조회 중...' : '위험도 확인'}
           </button>
@@ -109,17 +110,17 @@ function App() {
 
         {/* 지도 섹션 */}
         <section className="map-section">
-          <h2>📍 모니터링 지역</h2>
+          <h2>📍 예시 지도 위치</h2>
           <Map cctvData={cctvData} />
         </section>
 
-        {/* 실시간 데이터 섹션 */}
+        {/* 시연용 데이터 섹션 */}
         <section className="data-section">
-          <h2>실시간 모니터링</h2>
+          <h2>시연용 데이터</h2>
           <div className="data-grid">
             {weatherData && (
               <div className="data-card">
-                <h3>🌤️ 기상 정보</h3>
+                <h3>🌤️ 예시 기상 정보</h3>
                 <p>온도: {weatherData.temperature}°C</p>
                 <p>습도: {weatherData.humidity}%</p>
                 <p>강수량: {weatherData.rainfall}mm</p>
@@ -130,7 +131,7 @@ function App() {
             
             {waterLevel && (
               <div className="data-card">
-                <h3>🌊 수위 정보</h3>
+                <h3>🌊 예시 수위 정보</h3>
                 <p>수위: {waterLevel.waterLevel}m</p>
                 <p>유량: {waterLevel.flowRate}㎥/s</p>
                 <p>상태: <span style={{color: getStatusColor(waterLevel.status)}}>{waterLevel.status}</span></p>
