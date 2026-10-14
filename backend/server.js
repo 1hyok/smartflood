@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'SmartFlood API Server is running!' });
 });
 
-// 1. 기상청 실시간 기상관측 API
+// 1. 기상 예시 데이터를 반환하는 시연용 API
 app.get('/api/weather', async (req, res) => {
   try {
     // 임시 더미 데이터 (실제 API 키 발급 전까지)
@@ -37,7 +37,7 @@ app.get('/api/weather', async (req, res) => {
   }
 });
 
-// 2. 한국수자원공사 실시간 수위 정보
+// 2. 수위 예시 데이터를 반환하는 시연용 API
 app.get('/api/waterlevel', async (req, res) => {
   try {
     const waterData = {
@@ -57,7 +57,7 @@ app.get('/api/waterlevel', async (req, res) => {
   }
 });
 
-// 3. 서울시 하수관거 현황
+// 3. 배수 시설 예시 데이터를 반환하는 시연용 API
 app.get('/api/drainage', async (req, res) => {
   try {
     const drainageData = [
@@ -86,7 +86,7 @@ app.get('/api/drainage', async (req, res) => {
   }
 });
 
-// 4. 서울시 CCTV 설치현황
+// 4. CCTV 위치 예시를 반환하는 시연용 API
 app.get('/api/cctv', async (req, res) => {
   try {
     const cctvData = [
@@ -115,12 +115,12 @@ app.get('/api/cctv', async (req, res) => {
   }
 });
 
-// 5. 침수 위험도 예측 API
+// 5. 고정된 침수 위험도 예시를 반환하는 API
 app.get('/api/flood-risk', async (req, res) => {
   try {
     const { latitude, longitude } = req.query;
     
-    // AI 모델 예측 결과 (임시 더미 데이터)
+    // 시연용 더미 데이터이며 AI 모델의 예측 결과가 아님
     const riskData = {
       location: { latitude: latitude || 37.5089, longitude: longitude || 126.8951 },
       riskLevel: "low", // low, medium, high, critical
